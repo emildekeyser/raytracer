@@ -1,4 +1,4 @@
-team_member 'Nick' do
+team_member 'Thomas' do
   extension BasicSample
   extension BasicScripting
   
@@ -9,7 +9,7 @@ team_member 'Nick' do
   extension PrimitiveRotationX
 end
 
-team_member 'Kurt' do
+team_member 'Emil' do
   extension BasicSample
   extension BasicScripting
   
@@ -17,7 +17,7 @@ team_member 'Kurt' do
   extension RayTracerV5
 end
 
-team_member 'Dale' do
+team_member 'Romano' do
   extension BasicSample
   extension BasicScripting
 
