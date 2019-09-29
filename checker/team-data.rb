@@ -3,27 +3,21 @@ team_member 'Thomas' do
   extension BasicScripting
   
   extension RayTracerV1
-  extension RayTracerV2
-  extension RayTracerV3
-
-  extension PrimitiveRotationX
 end
 
 team_member 'Emil' do
   extension BasicSample
   extension BasicScripting
   
-  extension RayTracerV4
-  extension RayTracerV5
+  extension RayTracerV1
 end
 
 team_member 'Romano' do
   extension BasicSample
   extension BasicScripting
 
-  extension RayTracerV6
+  extension RayTracerV1
 end
-
 
 
 # Possible extensions
