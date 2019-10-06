@@ -16,8 +16,9 @@ team_member 'Romano' do
   extension BasicSample
   extension BasicScripting
   extension RayTracerV1
-
   extension RayTracerV2
+
+  extension RayTracerV3
 end
 
 
