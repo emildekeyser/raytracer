@@ -19,8 +19,9 @@ team_member 'Romano' do
   extension RayTracerV2
   extension RayTracerV3
   extension RayTracerV4
-  
   extension PlaneXZ
+  
+  extension PlaneYZ
 end
 
 
