@@ -1,6 +1,7 @@
 team_member 'Thomas' do
   extension BasicSample
   extension BasicScripting
+  extension PlaneYZ
   
   extension RayTracerV1
 end
@@ -20,12 +21,11 @@ team_member 'Romano' do
   extension RayTracerV3
   extension RayTracerV4
   extension RayTracerV5
+  extension RayTracerV6
   extension PlaneXZ
-  extension PlaneYZ
   extension PrimitiveScaling
   
-  # extension RayTracerV6
-  
+  extension Quaternions
 end
 
 
