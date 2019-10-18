@@ -24,8 +24,9 @@ team_member 'Romano' do
   extension RayTracerV6
   extension PlaneXZ
   extension PrimitiveScaling
-  
   extension Quaternions
+  
+  extension CircularAnimation
 end
 
 
