@@ -27,6 +27,7 @@ team_member 'Romano' do
   extension Quaternions
   
   extension CircularAnimation
+  extension ConeAlongX
 end
 
 
