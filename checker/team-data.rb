@@ -25,9 +25,10 @@ team_member 'Romano' do
   extension PlaneXZ
   extension PrimitiveScaling
   extension Quaternions
+  extension ConeAlongZ
   
-  extension CircularAnimation
-  extension ConeAlongX
+# ongoing:
+  extension SpotLight
 end
 
 
