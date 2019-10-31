@@ -27,8 +27,7 @@ team_member 'Romano' do
   extension Quaternions
   extension ConeAlongZ
   
-# ongoing:
-  extension SpotLight
+# extension ParallelScheduler
 end
 
 
