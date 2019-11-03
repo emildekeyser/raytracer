@@ -9,8 +9,9 @@ end
 team_member 'Emil' do
   extension BasicSample
   extension BasicScripting
-  
   extension RayTracerV1
+  extension RayTracerV2
+# extension RandomSampler
 end
 
 team_member 'Romano' do
