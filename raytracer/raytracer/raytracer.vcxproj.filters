@@ -276,10 +276,10 @@
     <ClCompile Include="raytracers\ray-tracer-v6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="math\quaternion.cpp">
+    <ClCompile Include="animation\circular-animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animation\circular-animation.cpp">
+    <ClCompile Include="samplers\random-sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -806,10 +806,10 @@
     <ClInclude Include="raytracers\ray-tracer-v6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="math\quaternion.h">
+    <ClInclude Include="animation\circular-animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="animation\circular-animation.h">
+    <ClInclude Include="samplers\random-sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
