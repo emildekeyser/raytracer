@@ -11,7 +11,9 @@ team_member 'Emil' do
   extension BasicScripting
   extension RayTracerV1
   extension RayTracerV2
-# extension RandomSampler
+  extension RandomSampler
+  extension MaterialVerticalLines
+  extension MaterialCheckered2D
 end
 
 team_member 'Romano' do
