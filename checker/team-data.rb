@@ -15,6 +15,7 @@ team_member 'Emil' do
   extension MaterialVerticalLines
   extension MaterialCheckered2D
   extension StratifiedSampler
+  extension JitteredSampler
 end
 
 team_member 'Romano' do

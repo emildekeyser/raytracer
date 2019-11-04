@@ -1,6 +1,5 @@
 #include "samplers/stratified-sampler.h"
 #include "math/rasterizer.h"
-#include <random>
 
 using namespace math;
 using namespace raytracer;
