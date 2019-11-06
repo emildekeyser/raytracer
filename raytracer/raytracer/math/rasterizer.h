@@ -14,6 +14,8 @@ namespace math
         Rectangle2D rect;
         unsigned m_horizontal_subdivisions;
         unsigned m_vertical_subdivisions;
+		Vector2D m_x_moat;
+		Vector2D m_y_moat;
 
     public:
         /// <summary>
@@ -22,8 +24,8 @@ namespace math
         /// <param name="rect">Rectangle to be subdivided into a grid.</param>
         /// <param name="horizontal_subdivisions">Number of columns.</param>
         /// <param name="vertical_subdivisions">Number of rows.</param>
-        Rasterizer(const Rectangle2D& rect, unsigned horizontal_subdivisions, unsigned vertical_subdivisions)
-            : rect(rect), m_horizontal_subdivisions(horizontal_subdivisions), m_vertical_subdivisions(vertical_subdivisions) { }
+        Rasterizer(const Rectangle2D& rect, unsigned horizontal_subdivisions, unsigned vertical_subdivisions, Vector2D x_moat = Vector2D(), Vector2D y_moat = Vector2D())
+            : rect(rect), m_horizontal_subdivisions(horizontal_subdivisions), m_vertical_subdivisions(vertical_subdivisions), m_x_moat(x_moat), m_y_moat(y_moat) { }
 
         /// <summary>
         /// Copy constructor.

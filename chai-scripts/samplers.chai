@@ -26,9 +26,10 @@ var scene = create_scene(camera, root, lights)
 
 
 var raytracer   = Raytracers.v6()
-//var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.random(8), "ray_tracer": raytracer ] )
+//var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.single(), "ray_tracer": raytracer ] )
 //var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.stratified(4, 4), "ray_tracer": raytracer ] )
-var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.jittered(4, 4), "ray_tracer": raytracer ] )
+//var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.jittered(4, 4), "ray_tracer": raytracer ] )
+var renderer    = Renderers.standard( [ "width": 500, "height": 500, "sampler": Samplers.halfjittered(4, 4), "ray_tracer": raytracer ] )
 
 pipeline( scene,
           [ Pipeline.renderer(renderer),

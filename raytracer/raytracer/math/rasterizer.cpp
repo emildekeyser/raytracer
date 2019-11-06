@@ -19,5 +19,9 @@ Rectangle2D math::Rasterizer::operator [](const Position2D& position) const
     Vector2D y_axis = this->rect.y_axis / this->m_vertical_subdivisions;
     Point2D origin = this->rect.origin + position.x * x_axis + position.y * y_axis;
 
+	x_axis -= (m_x_moat * 2);
+	y_axis -= (m_y_moat * 2);
+	origin += m_x_moat + m_y_moat;
+
     return Rectangle2D(origin, x_axis, y_axis);
 }
