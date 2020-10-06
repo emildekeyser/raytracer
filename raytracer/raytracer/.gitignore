@@ -2,3 +2,5 @@ generated-*.cpp
 .objectcache
 output.txt
 tags
+rt-debug
+rt-release
