@@ -1,58 +1,42 @@
-team_member 'Thomas' do
-  extension BasicSample
-  extension BasicScripting
-  extension PlaneYZ
-  
-  extension RayTracerV1
-end
-
 team_member 'Emil' do
   extension BasicSample
   extension BasicScripting
-  extension RayTracerV1
-  extension RayTracerV2
-  extension RandomSampler
-  extension MaterialVerticalLines
-  extension MaterialCheckered2D
-  extension StratifiedSampler
-  extension JitteredSampler
-  extension HalfJitteredSampler
-# extension NRooksSampler
-end
 
-team_member 'Romano' do
-  extension BasicSample
-  extension BasicScripting
+  # Raytracers
   extension RayTracerV1
   extension RayTracerV2
   extension RayTracerV3
   extension RayTracerV4
   extension RayTracerV5
   extension RayTracerV6
+
+  # Samplers
+  extension RandomSampler
+  extension StratifiedSampler
+  extension JitteredSampler
+  extension HalfJitteredSampler
+  # extension NRooksSampler wip
+
+  # Materials
+  extension MaterialVerticalLines
+  extension MaterialCheckered2D
+
+  # Primitives
+  extension PlaneYZ
   extension PlaneXZ
   extension PrimitiveScaling
+  extension ConeAlongY
+  extension SquareXY
+  extension SquareXZ
+  extension SquareYZ
+
+  # Animations
   extension Quaternions
-  extension ConeAlongZ
-  
-# extension ParallelScheduler
 end
-
-
+  
 # Possible extensions
 # You can copy paste lines below
 
-# extension BasicSample
-# extension BasicScripting
-# extension RayTracerV1
-# extension RayTracerV2
-# extension RayTracerV3
-# extension RayTracerV4
-# extension RayTracerV5
-# extension RayTracerV6
-# extension RandomSampler
-# extension StratifiedSampler
-# extension JitteredSampler
-# extension HalfJitteredSampler
 # extension NRooksSampler
 # extension MultijitteredSampler
 # extension DepthOfFieldCamera
@@ -94,9 +78,6 @@ end
 # extension ConeAlongXOptimized
 # extension ConeAlongYOptimized
 # extension ConeAlongZOptimized
-# extension SquareXY
-# extension SquareXZ
-# extension SquareYZ
 # extension SquareXYOptimized
 # extension SquareXZOptimized
 # extension SquareYZOptimized
