@@ -1,1 +1,4 @@
 generated-*.cpp
+.objectcache
+output.txt
+tags
