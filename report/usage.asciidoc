@@ -1,0 +1,23 @@
+= Report
+
+Edit the file `report.json`. The file should contain valid json and contain the following information:
+
+* `github-url`: refers to your GitHub repository. It should start with `https://` (which is the default), not with `git@` (if you communicate with GitHub through SSH).
+* `team-members`: an array describing the team members.
+  All team members must be listed, including those who are not ready.
+  Each team member is an object with the following entries:
+** `first-name`: first name, preferably without accents.
+** `last-name`: last name, preferably without accents.
+** `student-id`: r-number.
+** `is-done`: "yes" if the team member has finished his or her extensions and will appear at the defense,
+     "no" otherwise.
+
+To check the validity of your `report.json`, run the provided `check-report.py` script:
+
+[source,bash]
+----
+$ python check-report.py report.json
+----
+
+Only submit a report for which the checking script prints out a clear success message.
+Since I rely on scripts to parse your reports, failure to send in a valid report might lead to an NA.

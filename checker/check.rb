@@ -217,6 +217,8 @@ extension :SquareYZ, 1
 extension :SquareXYOptimized, 1
 extension :SquareXZOptimized, 1
 extension :SquareYZOptimized, 1
+extension :Disk, 2
+extension :DiskOptimized, 2
 extension :Cube, 2
 extension :CylinderAlongX, 2
 extension :CylinderAlongY, 2

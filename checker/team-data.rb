@@ -81,6 +81,8 @@ end
 # extension SquareXYOptimized
 # extension SquareXZOptimized
 # extension SquareYZOptimized
+# extension Disk
+# extension DiskExtension
 # extension Cube
 # extension CylinderAlongX
 # extension CylinderAlongY
