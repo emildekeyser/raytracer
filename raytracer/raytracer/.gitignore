@@ -4,3 +4,4 @@ output.txt
 tags
 rt-debug
 rt-release
+compile_commands.json

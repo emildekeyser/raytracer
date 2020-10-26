@@ -6,7 +6,7 @@ TEST_FLAGS=$(DEBUG_FLAGS) -DTEST_BUILD -ort-test
 NO_SCRIPTING_FLAGS=-DEXCLUDE_SCRIPTING
 
 OBJSDIR = .objectcache
-SRC := $(shell find -type f -name "*.cpp" -printf '%P ')
+SRC := $(shell find -type f -name "*.cpp" -not -path "*ccls-cache*" -printf '%P ')
 OBJS := $(patsubst %.cpp, $(OBJSDIR)/%.o, $(SRC))
 DEPS := $(OBJS:.o=.d)
 
@@ -44,15 +44,18 @@ $(OBJSDIR)/%.o: %.cpp
 	g++ $(DEBUG_FLAGS) -MMD -MF $(patsubst %.o,%.d,$@) -o $@ -c $<
 
 # Creates clone of directory structure in cache needed for neat creation ov .d and .o files
-create_cache_dirs = [ -d $(OBJSDIR) ] || find -type d | sed "s/\./$(OBJSDIR)/" | xargs mkdir -p
+create_cache_dirs = [ -d $(OBJSDIR) ] || find -type d -not -path "*ccls-cache*" | sed "s/\./$(OBJSDIR)/"  | xargs mkdir -p
 
 render:
 	rm -rf out
 	mkdir out
-	./rt-debug -s chai-scripts/cone-along-y.chai | tee output.txt | grep -v INFO | wif extract -o out/f%d.png
+	./rt-debug -s chai-scripts/triangle.chai | tee output.txt | grep -v INFO | wif extract -o out/f%d.png
+
+compiledb:
+	compiledb make
 
 clean:
 	rm -rf $(OBJSDIR)
 	$(RM) rt-debug
 
-.PHONY: clean
+.PHONY: clean render compiledb
