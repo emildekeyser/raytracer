@@ -1,0 +1,36 @@
+def scene_at(now)
+{
+  var camera = Cameras.perspective( [ "eye": pos(4, 4, 6),
+                                      "look_at": pos(0,0,0) ] )
+
+  var green = Materials.uniform( [ "ambient": Colors.green(),
+                                   "diffuse": Colors.green()] )
+  var white = Materials.uniform( [ "ambient": Colors.white(),
+                                   "diffuse": Colors.white()] )
+  var black = Materials.uniform( [ "ambient": Colors.black(),
+                                   "diffuse": Colors.black()] )
+
+  var checkered = Materials.checkered2d( white, black )
+
+  var v1 = pos(0, 0, 0)
+  var v2 = pos(2, 0, 0)
+  var v3 = pos(1, 1, 0)
+  var the_primitive = triangle(v1, v2, v3)
+
+  var root = union( [ decorate(green, the_primitive),
+                        decorate(checkered, translate(vec(0,-2,0), xz_plane())) ] )
+  var lights = []
+  create_scene(camera, root, lights)
+}
+
+var renderer = Renderers.standard( [ "width": 500,
+                                     "height": 500,
+                                     "sampler": Samplers.single(),
+                                     "ray_tracer": Raytracers.v1() ] )
+
+pipeline( scene_animation(scene_at, seconds(1)),
+          [ Pipeline.animation(1),
+            Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )
