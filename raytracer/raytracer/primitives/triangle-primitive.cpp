@@ -25,7 +25,7 @@ namespace
 			hit->local_position.xyz = hit->position;
 			hit->local_position.uv = Point2D(hit->position.y(), hit->position.z());
 			/* hit->normal = ray.origin.x() > 0 ? normal : -normal; */
-			hit->normal = normal; // XXX: this is wrong ?
+			hit->normal = normal; // TODO: this is wrong ?
 		}
 
         bool in_triangle(const Point3D& point, const Vector3D& normal) const
