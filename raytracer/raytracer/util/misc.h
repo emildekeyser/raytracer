@@ -28,6 +28,23 @@ void sort(T& x, T& y)
 }
 
 /// <summary>
+/// Sort three values
+/// </summary>
+template<typename T>
+void sort(T& x, T& y, T& z)
+{
+    if (x > y)
+    {
+        swap(x, y);
+    }
+    if (y > z)
+    {
+        swap(y, z);
+    }
+}
+
+
+/// <summary>
 /// Given two values <paramref name="x" /> and <paramref name="y" />,
 /// find the smallest positive one. If this value exists, it is written to <paramref name="result" /> and true is returned.
 /// If both values are negative, false is returned.

@@ -77,7 +77,7 @@ namespace
 
 		math::Box bounding_box() const override
 		{
-			return Box(interval(-1.0, 1.0), interval(-1.0, 1.0), interval(-0.01, 0.01));
+			return Box(interval(-1.0, 1.0), interval(-1.0, 1.0), Interval<double>::empty());
 		}
 
 	protected:
@@ -92,11 +92,9 @@ namespace
 
         bool in_square(Point3D point) const override
         {
-            return point.x() > -1.0
-                && point.x() < 1.0
-                && point.y() > -1.0
-                && point.y() < 1.0;
-
+            auto bb = bounding_box();
+            return bb.x().contains(point.x())
+                && bb.y().contains(point.y());
         }
 
 	};
@@ -110,14 +108,9 @@ namespace
 			// NOP
 		}
 
-		/*bool find_first_positive_hit(const math::Ray& ray, Hit* hit) const override
-		{
-			return raytracer::primitives::_private_::PrimitiveImplementation::find_first_positive_hit(ray, hit);
-		}*/
-
 		math::Box bounding_box() const override
 		{
-			return Box(Interval<double>::infinite(), interval(-0.01, 0.01), Interval<double>::infinite());
+            return Box(interval(-1.0, 1.0), Interval<double>::empty(), interval(-1.0, 1.0));
 		}
 	protected:
 		void initialize_hit(Hit* hit, const Ray& ray, double t) const override
@@ -129,7 +122,12 @@ namespace
 			hit->normal = ray.origin.y() > 0 ? m_normal : -m_normal;
 		}
 
-        bool in_square(Point3D point) const override {return true;} // TODO
+        bool in_square(Point3D point) const override
+        {
+            auto bb = bounding_box();
+            return bb.x().contains(point.x())
+                && bb.z().contains(point.z());
+        }
 
 	};
 
@@ -144,7 +142,7 @@ namespace
 
 		math::Box bounding_box() const override
 		{
-			return Box(interval(-0.01, 0.01), Interval<double>::infinite(), Interval<double>::infinite());
+            return Box(Interval<double>::empty(), interval(-1.0, 1.0), interval(-1.0, 1.0));
 		}
 
 	protected:
@@ -157,7 +155,12 @@ namespace
 			hit->normal = ray.origin.x() > 0 ? m_normal : -m_normal;
 		}
 
-        bool in_square(Point3D point) const override {return true;} // TODO
+        bool in_square(Point3D point) const override
+        {
+            auto bb = bounding_box();
+            return bb.y().contains(point.y())
+                && bb.z().contains(point.z());
+        }
 
 	};
 }
