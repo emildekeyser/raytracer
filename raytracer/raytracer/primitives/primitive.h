@@ -39,6 +39,11 @@ namespace raytracer
                 /// </summary>
                 /// <returns>A box fully containing this primitive.</returns>
                 virtual math::Box bounding_box() const = 0;
+
+                virtual std::string to_string()
+                {
+                    return "primitive";
+                }
             };
         }
     }

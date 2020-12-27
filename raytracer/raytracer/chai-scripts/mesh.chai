@@ -1,0 +1,34 @@
+global the_primitive = mesh("current.optimized-mesh")
+
+def scene_at(now)
+{
+  var camera = Cameras.perspective( [ "eye": pos(2, 2, 2),
+                                      "look_at": pos(0,0,0) ] )
+
+  var green = Materials.uniform( [ "ambient": Colors.green(),
+                                   "diffuse": Colors.green()] )
+  var white = Materials.uniform( [ "ambient": Colors.white(),
+                                   "diffuse": Colors.white()] )
+  var black = Materials.uniform( [ "ambient": Colors.black(),
+                                   "diffuse": Colors.black()] )
+
+  var checkered = Materials.checkered2d( white, black )
+
+
+  var root = union( [ decorate(green, the_primitive),
+                        decorate(checkered, translate(vec(0,-4,0), xz_plane())) ] )
+  var lights = []
+  create_scene(camera, root, lights)
+}
+
+var renderer = Renderers.standard( [ "width": 500,
+                                     "height": 500,
+                                     "sampler": Samplers.single(),
+                                     "ray_tracer": Raytracers.v1() ] )
+
+pipeline( scene_animation(scene_at, seconds(1)),
+          [ Pipeline.animation(1),
+            Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )

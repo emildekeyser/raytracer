@@ -6,6 +6,7 @@
 #include "primitives/sphere-primitive.h"
 #include "primitives/cone-primitive.h"
 #include "primitives/triangle-primitive.h"
+#include "primitives/mesh.h"
 
 #include "primitives/union-primitive.h"
 #include "primitives/decorator-primitive.h"

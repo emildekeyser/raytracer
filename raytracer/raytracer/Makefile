@@ -1,3 +1,5 @@
+CHAISCRIPT=mesh.chai
+
 CC=g++
 COMMONFLAGS=-I. -std=c++14 -pthread -DELPP_CUSTOM_OUT=std::cerr -DELPP_THREAD_SAFE
 DEBUG_FLAGS=$(COMMONFLAGS) -g -Wall -Wextra -O0
@@ -30,13 +32,6 @@ release_no_scripting_build:
 test_no_scripting_build:
 	$(CC) $(TEST_FLAGS) $(NO_SCRIPTING_FLAGS) $(OBJS) -ldl
 
-d: debug_build
-r: release_build
-t: test_build
-dn: debug_no_scripting_build
-rn: release_no_scripting_build
-tn: test_no_scripting_build
-
 -include $(DEPS)
 
 $(OBJSDIR)/%.o: %.cpp
@@ -49,7 +44,8 @@ create_cache_dirs = [ -d $(OBJSDIR) ] || find -type d -not -path "*ccls-cache*" 
 render:
 	rm -rf out
 	mkdir out
-	./rt-debug -s chai-scripts/triangle.chai | tee output.txt | grep -v INFO | wif extract -o out/f%d.png
+	./rt-debug -s chai-scripts/$(CHAISCRIPT) | grep -v INFO | wif extract -o out/f%d.png
+	# ./rt-debug -s chai-scripts/$(CHAISCRIPT) | tee output.txt | grep -v INFO | wif extract -o out/f%d.png
 
 compiledb:
 	compiledb make
@@ -57,5 +53,7 @@ compiledb:
 clean:
 	rm -rf $(OBJSDIR)
 	$(RM) rt-debug
+
+r: render
 
 .PHONY: clean render compiledb

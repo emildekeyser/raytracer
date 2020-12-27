@@ -12,12 +12,15 @@ def scene_at(now)
 
   var checkered = Materials.checkered2d( white, black )
 
-  var v1 = pos(0, 0, 0)
-  var v2 = pos(2, 0, 0)
-  var v3 = pos(1, 1, 0)
-  var the_primitive = triangle(v1, v2, v3)
+  var t1 = triangle(pos(0, 0, 0),
+                    pos(2, 0, 0),
+                    pos(1, 1, 0))
 
-  var root = union( [ decorate(green, the_primitive),
+  // var t2 = triangle(pos(0, 0, 0),
+  //                   pos(2, 0, 0),
+  //                   pos(1, 1, 0))
+
+  var root = union( [ decorate(green, t1),
                         decorate(checkered, translate(vec(0,-2,0), xz_plane())) ] )
   var lights = []
   create_scene(camera, root, lights)

@@ -4,7 +4,7 @@
 #include "primitives/cube-primitive.h"
 #include "math/interval.h"
 #include "util/misc.h"
-
+#include "easylogging++.h"
 #include <cmath>
 
 using namespace raytracer;
@@ -17,11 +17,12 @@ namespace
 	class BoundingBoxAcceleratorImplementation : public raytracer::primitives::_private_::PrimitiveImplementation
 	{
     private:
-        const Primitive m_primitive;
+        Primitive m_primitive;
         const Box m_bounding_box;
-        Primitive m_transformed_cube;
+        int m_index;
 
     public:
+        static int counter;
 
 		/// <summary>
 		/// Constructor.
@@ -29,20 +30,21 @@ namespace
 		/// <param name="primitive">
 		/// primitive
 		/// </param>
-		BoundingBoxAcceleratorImplementation(const Primitive& primitive)
-			: m_primitive(primitive), m_bounding_box(primitive->bounding_box())
-        {
-            auto center_vector = m_bounding_box.center() - Point3D(0, 0, 0);
-            auto translated = translate(center_vector, cube());
-            auto x = m_bounding_box.x().size();
-            auto y = m_bounding_box.y().size();
-            auto z = m_bounding_box.z().size();
-            m_transformed_cube = scale(x, y, z, translated);
-        }
+		BoundingBoxAcceleratorImplementation(Primitive primitive)
+            : m_primitive(primitive), m_bounding_box(primitive->bounding_box()),
+            m_index(BoundingBoxAcceleratorImplementation::counter++){}
 
 		std::vector<std::shared_ptr<Hit>> find_all_hits(const math::Ray& ray) const override
 		{
-			return m_transformed_cube->find_all_hits(ray);
+            std::vector<std::shared_ptr<Hit>> return_value;
+            if (m_bounding_box.is_hit_by(ray))
+            {
+				LOG(INFO) << "BOX index:" << m_index;
+				LOG(INFO) << "BOX:" << m_primitive->to_string();
+                return_value = m_primitive->find_all_hits(ray);
+            }
+
+            return return_value;
 		}
 
 		Box bounding_box() const override
@@ -50,11 +52,43 @@ namespace
 			return m_bounding_box;
 		}
 
-	};
+        std::string to_string() override
+        {
+            return "bounding box";
+        }
+    };
+
+    int BoundingBoxAcceleratorImplementation::counter = 0;
+
+    class EmptyBoxImplementation : public raytracer::primitives::_private_::PrimitiveImplementation
+    {
+        public:
+
+            std::vector<std::shared_ptr<Hit>> find_all_hits(const math::Ray& ray) const override
+            {
+                return std::vector<std::shared_ptr<Hit>>();
+            }
+
+            Box bounding_box() const override
+            {
+                return Box::empty();
+            }
+
+            std::string to_string() override
+            {
+                return "empty box";
+            }
+    };
 
 }
 
 Primitive raytracer::primitives::bounding_box_accelerator(const Primitive& primitive)
 {
-	return Primitive(std::make_shared<BoundingBoxAcceleratorImplementation>(primitive));
+    return Primitive(std::make_shared<BoundingBoxAcceleratorImplementation>(primitive));
 }
+
+Primitive raytracer::primitives::empty_box()
+{
+    return Primitive(std::make_shared<EmptyBoxImplementation>());
+}
+

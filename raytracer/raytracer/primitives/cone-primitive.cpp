@@ -8,7 +8,6 @@ using namespace raytracer;
 using namespace raytracer::primitives;
 using namespace math;
 
-
 namespace
 {
 	class ConeAlongYImplementation : public raytracer::primitives::_private_::PrimitiveImplementation

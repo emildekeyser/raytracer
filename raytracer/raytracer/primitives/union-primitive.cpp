@@ -119,6 +119,11 @@ namespace
             return m_child1->bounding_box().merge(m_child2->bounding_box());
         }
 
+        std::string to_string() override
+        {
+            return "union";
+        }
+
     private:
         Primitive m_child1;
         Primitive m_child2;

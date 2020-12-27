@@ -2,7 +2,6 @@ team_member 'Emil' do
   extension BasicSample
   extension BasicScripting
 
-  # Raytracers
   extension RayTracerV1
   extension RayTracerV2
   extension RayTracerV3
@@ -23,16 +22,20 @@ team_member 'Emil' do
 
   # Primitives
   extension PlaneYZ
-  extension PlaneXZ
+  # extension PlaneXZ
   extension PrimitiveScaling
   extension ConeAlongY
-  extension SquareXY
-  extension SquareXZ
+  # extension SquareXY
+  # extension SquareXZ
   extension SquareYZ
   extension Triangle
+  extension Mesh
 
   # Animations
   extension Quaternions
+
+  # Tasks
+  extension ParallelScheduler
 end
   
 # TODO

@@ -2,6 +2,7 @@
 #include "math/interval.h"
 #include "util/misc.h"
 
+#include "easylogging++.h"
 #include <cmath>
 
 using namespace raytracer;
@@ -17,6 +18,7 @@ namespace
         const Point3D m_vertex1;
         const Point3D m_vertex2;
         const Point3D m_vertex3;
+        int m_index;
 
 		void initialize_hit(Hit* hit, const Ray& ray, double t, const Vector3D& normal) const
 		{
@@ -55,7 +57,8 @@ namespace
         }
 
     public:
-
+        static int counter;
+        
 		/// <summary>
 		/// Constructor.
 		/// </summary>
@@ -69,10 +72,14 @@ namespace
 		/// vector3
 		/// </param>
 		TriangleImplementation(const Point3D& vertex1, const Point3D& vertex2, const Point3D& vertex3)
-			: m_vertex1(vertex1), m_vertex2(vertex2), m_vertex3(vertex3){}
+			: m_vertex1(vertex1), m_vertex2(vertex2), m_vertex3(vertex3),
+            m_index(TriangleImplementation::counter++){}
 
 		std::vector<std::shared_ptr<Hit>> find_all_hits(const math::Ray& ray) const override
 		{
+            LOG(INFO) << "TRIANGLE:" << m_index;
+            // LOG(INFO) << "TRIANGLE:" << m_vertex1 << m_vertex2 << m_vertex3;
+
 			std::vector<std::shared_ptr<Hit>> hits;
             Vector3D ab = m_vertex1 - m_vertex2;
             Vector3D ac = m_vertex1 - m_vertex3;
@@ -100,10 +107,22 @@ namespace
 
 		math::Box bounding_box() const override
 		{
-			return Box(interval(-0.01, 0.01), Interval<double>::infinite(), Interval<double>::infinite());
+            double min_x = std::min(std::min(m_vertex1.x(), m_vertex2.x()), m_vertex3.x());
+			double max_x = std::max(std::max(m_vertex1.x(), m_vertex2.x()), m_vertex3.x());
+			double min_y = std::min(std::min(m_vertex1.y(), m_vertex2.y()), m_vertex3.y());
+			double max_y = std::max(std::max(m_vertex1.y(), m_vertex2.y()), m_vertex3.y());
+			double min_z = std::min(std::min(m_vertex1.z(), m_vertex2.z()), m_vertex3.z());
+			double max_z = std::max(std::max(m_vertex1.z(), m_vertex2.z()), m_vertex3.z());
+			return Box(interval(min_x, max_x), interval(min_y, max_y), interval(min_z, max_z));
 		}
 
+        std::string to_string() override
+        {
+            return "triangle";
+        }
 	};
+
+    int TriangleImplementation::counter = 0;
 
 }
 
