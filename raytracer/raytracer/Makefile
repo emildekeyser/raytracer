@@ -1,7 +1,5 @@
-CHAISCRIPT=mesh.chai
-
 CC=g++
-COMMONFLAGS=-I. -std=c++14 -pthread -DELPP_CUSTOM_OUT=std::cerr -DELPP_THREAD_SAFE
+COMMONFLAGS=-I. -std=c++14 -pthread -DELPP_CUSTOM_COUT=std::cerr -DELPP_THREAD_SAFE
 DEBUG_FLAGS=$(COMMONFLAGS) -g -Wall -Wextra -O0
 RELEASE_FLAGS=$(COMMONFLAGS) -DNDEBUG -O3 -s -ort-release
 TEST_FLAGS=$(DEBUG_FLAGS) -DTEST_BUILD -ort-test
@@ -41,19 +39,15 @@ $(OBJSDIR)/%.o: %.cpp
 # Creates clone of directory structure in cache needed for neat creation ov .d and .o files
 create_cache_dirs = [ -d $(OBJSDIR) ] || find -type d -not -path "*ccls-cache*" | sed "s/\./$(OBJSDIR)/"  | xargs mkdir -p
 
-render:
+%.chai: null
 	rm -rf out
 	mkdir out
-	./rt-debug -s chai-scripts/$(CHAISCRIPT) | grep -v INFO | wif extract -o out/f%d.png
-	# ./rt-debug -s chai-scripts/$(CHAISCRIPT) | tee output.txt | grep -v INFO | wif extract -o out/f%d.png
+	./rt-debug -s $@ | wif extract -o out/f%d.png
 
-compiledb:
-	compiledb make
+r: chai-scripts/mesh.chai
 
 clean:
 	rm -rf $(OBJSDIR)
 	$(RM) rt-debug
 
-r: render
-
-.PHONY: clean render compiledb
+.PHONY: clean null
