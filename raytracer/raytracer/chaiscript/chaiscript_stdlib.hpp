@@ -18,7 +18,7 @@
 #include "dispatchkit/bootstrap.hpp"
 #include "dispatchkit/bootstrap_stl.hpp"
 #include "dispatchkit/boxed_value.hpp"
-#include "language/chaiscript_prelude.chai"
+#include "language/chaiscript_prelude.chaiscript" // this is to fix makefile
 #include "utility/json_wrap.hpp"
 
 #ifndef CHAISCRIPT_NO_THREADS
