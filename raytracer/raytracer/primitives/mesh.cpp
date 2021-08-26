@@ -82,6 +82,7 @@ namespace
             assert(triangle_stack.empty());
             assert(box_stack.size() == 1);
             return box_stack[0];
+            // return make_union(triangle_stack);
         }
 
     public:
