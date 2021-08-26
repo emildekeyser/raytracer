@@ -1,23 +1,11 @@
 {
-    "github-url": "TODO",
+    "github-url": "https://github.com/ucll-3dcg-2021/ray-tracer-team1.git",
     "team-members": [
         {
-            "first-name": "TODO",
-            "last-name": "TODO",
-            "student-id": "TODO",
-            "is-done": "TODO"
-        },
-        {
-            "first-name": "TODO",
-            "last-name": "TODO",
-            "student-id": "TODO",
-            "is-done": "TODO"
-        },
-        {
-            "first-name": "TODO",
-            "last-name": "TODO",
-            "student-id": "TODO",
-            "is-done": "TODO"
+            "first-name": "emil",
+            "last-name": "de keyser",
+            "student-id": "r0599128",
+            "is-done": "no"
         }
     ]
 }
