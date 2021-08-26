@@ -1,9 +1,4 @@
-generated-*.cpp
 .objectcache
-output.txt
-tags
+.cache
 rt-debug
 rt-release
-compile_commands.json
-@@home@user1@project@ucll@2021-sem1@3D@3dcg-raytracer-2021-team1@raytracer@raytracer
-@home@user1@project@ucll@2021-sem1@3D@3dcg-raytracer-2021-team1@raytracer@raytracer
