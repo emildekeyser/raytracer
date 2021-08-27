@@ -3,11 +3,11 @@ team_member 'Emil' do
   extension BasicScripting
 
   extension RayTracerV1
-  extension RayTracerV2
-  extension RayTracerV3
-  extension RayTracerV4
-  extension RayTracerV5
-  extension RayTracerV6
+  # extension RayTracerV2
+  # extension RayTracerV3
+  # extension RayTracerV4
+  # extension RayTracerV5
+  # extension RayTracerV6
 
   # Samplers
   extension RandomSampler
@@ -32,10 +32,10 @@ team_member 'Emil' do
   extension Mesh
 
   # Animations
-  extension Quaternions
+  # extension Quaternions
 
   # Tasks
-  extension ParallelScheduler
+  # extension ParallelScheduler
 end
   
 # TODO
