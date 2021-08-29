@@ -1,9 +1,9 @@
 all:
-	go build mesh-generator.go
+	go build mesher.go
 
 optmesh:
-	pv ../meshfiles/100d-quad1.mesh \
-		| ./mesher > ../meshfiles/100d-quad1.optimized.mesh
+	pv ../meshfiles/armadillo.mesh \
+		| ./mesher > ../meshfiles/armadillo.optim.mesh
 
-unoptmesh:
+genmesh:
 	./mesh-generator > ../meshfiles/100d-quad1.mesh

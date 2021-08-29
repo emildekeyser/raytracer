@@ -13,7 +13,7 @@ import (
 	// "container/list"
 )
 
-const N = 10
+const N = 100
 
 type triangle struct {
     v1 vec3.T
