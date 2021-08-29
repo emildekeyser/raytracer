@@ -58,10 +58,10 @@ namespace
                     triangle_stack.clear();
                     box_stack.push_back(tmp);
                 }
-                else if(command == "emptybox")
-                {
-                    box_stack.push_back(empty_box());
-                }
+                // else if(command == "emptybox")
+                // {
+                //     box_stack.push_back(empty_box());
+                // }
                 else
                 {
                     assert(command == "box");

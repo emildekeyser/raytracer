@@ -1,30 +1,36 @@
-global the_primitive = mesh("current.optimized-mesh")
+global the_primitive = mesh("../../potato-mesher/meshfiles/bunny.optim.mesh")
 
 def scene_at(now)
 {
-  var camera = Cameras.perspective( [ "eye": pos(40, 40, 40),
+    var camera = Cameras.perspective( [ "eye": pos(3, 3, 3),
                                       "look_at": pos(0,0,0) ] )
 
-  var green = Materials.uniform( [ "ambient": Colors.green(),
-                                   "diffuse": Colors.green()] )
-  /* var white = Materials.uniform( [ "ambient": Colors.white(), */
-  /*                                  "diffuse": Colors.white()] ) */
-  /* var black = Materials.uniform( [ "ambient": Colors.black(), */
-  /*                                  "diffuse": Colors.black()] ) */
+    var green = Materials.uniform(["ambient": Colors.green() * 0.1,
+                                     "diffuse": Colors.green() * 0.8,
+                                     "specular": Colors.white() * 0.8,
+                                     "specular_exponent": 10,
+                                     "transparency": 0.7,
+                                     "refractive_index": 2.5])
 
-  /* var checkered = Materials.checkered2d( white, black ) */
-  /* var root = union( [ decorate(green, the_primitive), */
-  /*                       decorate(checkered, translate(vec(0,-4,0), xz_plane())) ] ) */
+  var white = Materials.uniform( [ "ambient": Colors.white(),
+                                   "diffuse": Colors.white()] )
+  var black = Materials.uniform( [ "ambient": Colors.black(),
+                                   "diffuse": Colors.black()] )
 
-  var root = decorate(green, the_primitive)
-  var lights = []
+  var checkered = Materials.checkered2d( white, black )
+
+  var root = union( [ decorate(green, the_primitive),
+                        decorate(checkered, translate(vec(0,-4,0), xz_plane())) ] )
+  // var root = decorate(green, the_primitive)
+  // var lights = []
+  var lights = [ Lights.omnidirectional( pos(0,4,0), Colors.white() ) ]
   create_scene(camera, root, lights)
 }
 
 var renderer = Renderers.standard( [ "width": 500,
                                      "height": 500,
                                      "sampler": Samplers.single(),
-                                     "ray_tracer": Raytracers.v1() ] )
+                                     "ray_tracer": Raytracers.v4() ] )
 
 pipeline( scene_animation(scene_at, seconds(1)),
           [ Pipeline.animation(1),
