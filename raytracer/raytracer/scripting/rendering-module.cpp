@@ -16,9 +16,11 @@ namespace
 {
     struct RendererLibrary
     {
+
         Renderer standard(unsigned width, unsigned height, Sampler sampler, RayTracer ray_tracer) const
         {
-            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::serial());
+            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::parallel());
+            // return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::serial());
         }
 
         Renderer standard_by_map(const std::map<std::string, Boxed_Value>& argument_map) const

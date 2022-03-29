@@ -25,14 +25,14 @@ namespace
         {
             long double x, y, z;
             mesh_data_stream >> x >> y >> z;
-            LOG(INFO) << std::setprecision(18);
-            LOG(INFO) << x << " -- " << y << " -- " << z;
+            // LOG(INFO) << std::setprecision(18);
+            // LOG(INFO) << x << " -- " << y << " -- " << z;
             auto p1 = Point3D(x, y, z);
             mesh_data_stream >> x >> y >> z;
-            LOG(INFO) << x << " -- " << y << " -- " << z;
+            // LOG(INFO) << x << " -- " << y << " -- " << z;
             auto p2 = Point3D(x, y, z);
             mesh_data_stream >> x >> y >> z;
-            LOG(INFO) << x << " -- " << y << " -- " << z;
+            // LOG(INFO) << x << " -- " << y << " -- " << z;
             auto p3 = Point3D(x, y, z);
 
             return triangle(p1, p2, p3);
@@ -45,7 +45,7 @@ namespace
             std::vector<Primitive> box_stack;
             while(mesh_data_stream >> command)
             {
-                LOG(INFO) << command;
+                // LOG(INFO) << command;
                 if (command == "triangle")
                 {
                     triangle_stack.push_back(parse_triangle(mesh_data_stream));

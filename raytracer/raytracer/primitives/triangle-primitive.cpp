@@ -67,7 +67,7 @@ namespace
 			{
 				auto hit = std::make_shared<Hit>();
 				initialize_hit(hit.get(), ray, t);
-				hit->normal = -edge2.cross(edge1);
+				hit->normal = -edge2.cross(edge1).normalized();
 				hits.push_back(hit);
 				
 			}

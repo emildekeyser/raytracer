@@ -29,13 +29,14 @@ team_member 'Emil' do
   # extension SquareXZ
   extension SquareYZ
   extension Triangle
+  extension BoundingBox
   extension Mesh
 
   # Animations
   # extension Quaternions
 
   # Tasks
-  # extension ParallelScheduler
+  extension ParallelScheduler
 end
   
 # TODO
@@ -94,7 +95,6 @@ end
 # extension CylinderAlongYOptimized
 # extension CylinderAlongZOptimized
 # extension TriangleOptimized
-# extension BoundingBox
 # extension Cropper
 # extension CropperOptimized
 # extension Bumpifier

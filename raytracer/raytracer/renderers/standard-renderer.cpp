@@ -62,7 +62,7 @@ namespace
         /// <returns>
         Color render_pixel(const math::Rasterizer& window_rasterizer, const Position2D& position, const Scene& scene) const
         {
-            LOG(INFO) << "POSITION:" << position;
+            // LOG(INFO) << "POSITION:" << position;
             // Find which part of the [0, 1] x [0, 1] corresponds to the pixel at the given position
             math::Rectangle2D pixel_rectangle = window_rasterizer[position];
 

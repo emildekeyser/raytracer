@@ -1,7 +1,6 @@
 #pragma once
 
 #include "renderers/renderer.h"
-#include "renderers/renderer.h"
 #include <functional>
 
 

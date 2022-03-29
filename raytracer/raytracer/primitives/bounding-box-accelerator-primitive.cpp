@@ -39,8 +39,8 @@ namespace
             std::vector<std::shared_ptr<Hit>> return_value;
             if (m_bounding_box.is_hit_by(ray))
             {
-				LOG(INFO) << "BOX index:" << m_index;
-				LOG(INFO) << "BOX:" << m_primitive->to_string();
+				// LOG(INFO) << "BOX index:" << m_index;
+				// LOG(INFO) << "BOX:" << m_primitive->to_string();
                 return_value = m_primitive->find_all_hits(ray);
             }
 
